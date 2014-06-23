@@ -21,7 +21,11 @@
 #BG {
 	position: absolute;
 	z-index: -999;
+}
 
+#headsucker{
+    position: absolute;
+    top: -40px;
 }
 
 #Signinpage {

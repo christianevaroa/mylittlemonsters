@@ -110,6 +110,7 @@ $(document).ready(function() {
     $('#creatureArea').hide();
     $('#interactionbox').hide();
     $('#infobox').hide();
+    $('#alertBoxList').hide();
   }
   
   function showMainPage() {
@@ -119,6 +120,7 @@ $(document).ready(function() {
     $('#gsempty').show();
     $('#logOut').show();
     $('#creatureArea').show();
+    $('#alertBoxList').show();
 
     showNav();
   }

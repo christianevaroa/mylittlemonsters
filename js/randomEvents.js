@@ -39,6 +39,10 @@ var alertQueue = [];
     }, 5000); // 60000 = run every 10 minutes
 
     setInterval(function(){
+      if(!localStorage.name){
+             return;
+       }
+      
         if(Math.random() < 1){
             if(blobsickDate==0){
                 blobsickDate= Date.now();
@@ -58,6 +62,7 @@ var alertQueue = [];
 
                     $('#alertBox2').fadeOut('slow');
                     blobsickDate = 0;
+                    $('#alertBox2').remove();
                 }
             }
         }
