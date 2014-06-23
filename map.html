@@ -96,7 +96,7 @@ var circles = [];
      var neBound = new google.maps.LatLng(-41.254932, 174.801525);
      var bounds = new google.maps.LatLngBounds(swBound, neBound);
 
-     var srcImage = 'https://s3-ap-southeast-2.amazonaws.com/nwen304-assets/Main+Screens/map.png';
+     var srcImage = 'img/Big Map.jpg';
 
      overlay = new USGSOverlay(bounds, srcImage, map);
 
@@ -180,7 +180,8 @@ userMarker = new google.maps.LatLng(localStorage.latitude, localStorage.longitud
 theUserMarker = new google.maps.Marker({
   position : userMarker,
   map : map,
-  title : "YOU ARE HERE", 
+  title : "YOU ARE HERE",
+  icon: 'img/userloc.png' 
 });
   markers.push(theUserMarker);
   theUserMarker.setMap(map);
