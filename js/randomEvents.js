@@ -4,7 +4,7 @@
            }
         // if(localStorage.)
 
-        alert("i will eat you");
+        // alert("i will eat you");
         if(Math.random() < 1) {
             var monsterlist = JSON.parse(localStorage.monsters);
             var firstMonster = monsterlist[randomInt(monsterlist.length)].name;
