@@ -49,6 +49,7 @@
         <!-- // <script src="js/profileSlide.js"></script> -->
          <script src="js/MyProfileToggle.js"></script>
          <script src="js/geoupdate.js"></script>
+         <script src="js/randomEvents.js"></script>
 
         <!-- END OF UI SCRIPTS LIST -->
 
@@ -95,7 +96,7 @@ var circles = [];
      var neBound = new google.maps.LatLng(-41.254932, 174.801525);
      var bounds = new google.maps.LatLngBounds(swBound, neBound);
 
-     var srcImage = 'https://s3-ap-southeast-2.amazonaws.com/nwen304-assets/Main+Screens/map.png';
+     var srcImage = 'img/Big Map.jpg';
 
      overlay = new USGSOverlay(bounds, srcImage, map);
 
@@ -179,7 +180,8 @@ userMarker = new google.maps.LatLng(localStorage.latitude, localStorage.longitud
 theUserMarker = new google.maps.Marker({
   position : userMarker,
   map : map,
-  title : "YOU ARE HERE", 
+  title : "YOU ARE HERE",
+  icon: 'img/userloc.png' 
 });
   markers.push(theUserMarker);
   theUserMarker.setMap(map);
@@ -280,10 +282,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
                         <li id="Monsters"><img src="img/profileNav1.png"></li>
                          <!-- <li id="MyProfile"><img src="img/MyProfile.png"></li> -->
                         <li id="MyMonsters"><img src="img/creaturesNav.png"></li>
-
                     </ul>
 
 
+                </div>                
+                <div id="FoundMonster" style="display: none;">
+                  <img src="img/MonstersFound/blobfound.png" id="foundMonsterimage" class="blob">
                 </div>
 
  
@@ -306,26 +310,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
         </div>
 
-                        <script>
-        setInterval(function(){
-            if(Math.random() < 1) {
-                var monsterlist = JSON.parse(localStorage.monsters);
-                var firstMonster = monsterlist[randomInt(monsterlist.length)].name;
-                var secondMonster = monsterlist[randomInt(monsterlist.length)].name;
-                while(secondMonster == firstMonster) {
-                    var secondMonster = monsterlist[randomInt(monsterlist.length)].name;
-                }
-                localStorage.firstMonster = firstMonster;
-                localStorage.secondMonster = secondMonster;
+        <script>
 
-                $('#alertBox').fadeIn('slow');
-
-            }
-        }, 5000); // 60000 = run every 10 minutes
-
-        function randomInt(max) {
-            return Math.floor(Math.random() * max);
-        }
               // 
               // PREVENTS RUBBER BANDING ON X & Y AXIS BUT ALSO ALLOWS SCROLLS ON X & Y
 

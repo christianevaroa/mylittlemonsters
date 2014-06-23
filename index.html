@@ -137,8 +137,8 @@
     <div id="signin">       
         <div id="user-form">
                 <!-- <form action='/signin' id='login-form' method='post'> -->
-        <input type="text" name="name" id="name" placeholder="Username"><br>
-        <input type="password" class="form-control" name="password" id="password" placeholder="Password"><br>
+        <input type="text" name="name" id="name" autocorrect="off" autocapitalize="off" placeholder="Username"><br>
+        <input type="password" class="form-control" name="password" id="password" autocorrect="off" autocapitalize="off" placeholder="Password"><br>
         <input type="submit" value="login" id="login"/>
                 <!-- </form> -->
         </div>      
@@ -161,29 +161,7 @@
         <script src="js/helper.js"></script>
         <script src="js/backgroundSwitcher.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
-
-                <script>
-        setInterval(function(){
-            if(localStorage.name != "" && localStorage.name != undefined){
-            if(Math.random() < 1) {
-                var monsterlist = JSON.parse(localStorage.monsters);
-                var firstMonster = monsterlist[randomInt(monsterlist.length)].name;
-                var secondMonster = monsterlist[randomInt(monsterlist.length)].name;
-                while(secondMonster == firstMonster) {
-                    var secondMonster = monsterlist[randomInt(monsterlist.length)].name;
-                }
-                localStorage.firstMonster = firstMonster;
-                localStorage.secondMonster = secondMonster;
-
-                $('#alertBox').fadeIn('slow');
-
-            }}
-        }, 60000); // 60000 = run every 10 minutes
-
-        function randomInt(max) {
-            return Math.floor(Math.random() * max);
-        }
-        </script>
+        <script src="js/randomEvents.js"></script>
 
         <script>
                 // PREVENTS THE IPAD FROM RUBBER BANDING X & Y POSITION 
