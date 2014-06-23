@@ -10,6 +10,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="cleartype" content="on">
 
+        <meta name="description" content="">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="cleartype" content="on">
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/touch/apple-touch-icon-144x144-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/touch/apple-touch-icon-114x114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/touch/apple-touch-icon-72x72-precomposed.png">
@@ -19,6 +27,14 @@
         <!-- Tile icon for Win8 (144x144 + tile color) -->
         <meta name="msapplication-TileImage" content="img/touch/apple-touch-icon-144x144-precomposed.png">
         <meta name="msapplication-TileColor" content="#222222">
+
+         <!-- ADD2HOME META TAGS -->
+        <script type="application/javascript" src="js/lib/add2home.js"></script>
+
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="css/monsters.css">
 
 
         <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
@@ -68,27 +84,23 @@
     <body>
 
         <div id="container">
-            <!-- <div id="BG"><img src="img/GatheringScreen.jpg"></div> -->
-
-          <div><img id="BG2" src="img/GatheringScreen.jpg"> </div> 
+            <div id="Signinpage"><img src="img/signinTrial.jpg"></div>
+                <!-- <div id="creatureArea"></div> -->
+          <div id="BG2"><img src="img/floraglowM/floraglowbg.jpg"></div> 
 
                         
                     <div id="logOut"><img src="img/logout.png"></div>
+                    <div id="backButton"><a href="creatureArea.html"><img src="img/backbutton.png"></a></div>
 
-                    <!-- Creatures plotted on the area -->
 
-                    <div id="plottedCreatures">
+                    <div id="detailedMonsterBox">
+                        <div id="clickimgswap"><img src="img/flip.png"></div> 
 
-                        <div id="purpleM"><a href="purpleM.html"><img src="img/gatheringscreen/purplemonster.png"></a></div>
-                        <div id="greenM"><a href="nuubyM.html"><img src="img/gatheringscreen/greenmonster.png"></a></div>
-                        <div id="glowM"><a href="floraglowM.html"><img src="img/gatheringscreen/glowmonster.png"></a></div>
-                        <div id="frogM"><img src="img/gatheringscreen/frogman.png"></div>
-                        <div id="blobM"><a href="blobM.html"><img src="img/gatheringscreen/blob.png"></a></div>
-
+                        <div id="interactionbox"><img class="fade" src="img/floraglowM/interactionbox.png"></div>
+                        <div id="infobox"><img   src="img/floraglowM/Floraglowinfo.png"></div>
 
                     </div>
 
-                     <!-- PROFILE THAT SLIDES DOWN -->
 
                     <div id="MyProfile">
                         <ul>
@@ -96,16 +108,15 @@
                         </ul>
                     </div>
 
-                        <!-- PROFILE OF MONSTERS IN THE BOT-SCROLL ARRAY -->
-
+                                                        <!-- Bot Scroll clickable / monster profiles -->
                      <div id="MonsterProfile">
                         <ul>
                             <img src="" class="monster-profile-image" id="">
                         </ul>
                     </div>
 
-                    <!-- NAV BAR -->
 
+                                <!-- The NAV BAR -->
                 <div id="Nav">
                     <ul>
 
@@ -122,14 +133,13 @@
 
                 </div>
 
-                <!-- ARRAY OF MONSTERS BOTTOM OF SCREEN -->
 
             <div id="botScroll">
                 <div id="owl-demo" class="owl-carousel">
                 </div>
             </div>
 
-                    <!-- SIGN IN PAGE/ HIDDEN UNLESS ON SIGNIN LOCATED IN INDEX.HTML -->
+
 
     <div id="signin">       
         <div id="user-form">
@@ -141,16 +151,13 @@
         </div>      
     </div>
 
-                    <!-- ALERT BOX OF WHAT MONSTERS ARE DOING/ TOP RIGHT CORNER -->
 
     <div id="alertBox">
         <a href="fightScreen.html"><img src="img/updatedox.png" ></a>
     </div>
 
 
-
-
-        </div>      <!-- END OF ID "CONTAINER" -->
+        </div>
 
 
 
@@ -160,9 +167,11 @@
         <script src="js/vendor/zepto.min.js"></script>
         <script src="js/helper.js"></script>
         <script src="js/backgroundSwitcher.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
 
                 <script>
         setInterval(function(){
+            if(localStorage.name != "" && localStorage.name != undefined){
             if(Math.random() < 1) {
                 var monsterlist = JSON.parse(localStorage.monsters);
                 var firstMonster = monsterlist[randomInt(monsterlist.length)].name;
@@ -172,25 +181,35 @@
                 }
                 localStorage.firstMonster = firstMonster;
                 localStorage.secondMonster = secondMonster;
-                // var effect = 'slide';
-                // var options = { direction : 'up' };
-                // var duration = 300;
-                console.log("alertBox should slide in");
-                // $("#alertBox").toggle(effect, options, duration);
 
                 $('#alertBox').fadeIn('slow');
 
-            }
+            }}
         }, 5000); // 60000 = run every 10 minutes
 
         function randomInt(max) {
             return Math.floor(Math.random() * max);
         }
+        </script>
 
-             // 
-              // PREVENTS RUBBER BANDING ON X & Y AXIS BUT ALSO ALLOWS SCROLLS ON X & Y
+        <script>
+            function onSuccess(position) {
+                console.log("lat: "+position.coords.latitude+", lon: "+position.coords.longitude);
+            }
+            function onError(error) {
+                console.log(error);
+            }
+            function getLoc() {
+                navigator.geolocation.getCurrentPosition(onSuccess, onError);
+            }
+            getLoc();
+            setInterval(function(){getLoc();}, 5000);
 
-                    (function registerScrolling($) {
+                // PREVENTS THE IPAD FROM RUBBER BANDING X & Y POSITION 
+                // HAS GOT SCROLL X & Y INCASE ELEMENT INSIDE THE APP NEED TO BE SCROLLED AND WOULD BE PREVENTED
+
+
+            (function registerScrolling($) {
     var prevTouchPosition = {},
         scrollYClass = 'scroll-y',
         scrollXClass = 'scroll-x',
