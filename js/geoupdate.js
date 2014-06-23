@@ -1,7 +1,7 @@
 setInterval(getLoc, 30000);
 
 function onSuccess(position) {
-  // alert("asdas");
+  alert("geolocation success");
   localStorage.latitude = position.coords.latitude;
   localStorage.longitude = position.coords.longitude;
   if(localStorage.id != "" && localStorage.id != undefined){
@@ -23,7 +23,8 @@ function onSuccess(position) {
   }
 }
 function onError(error) {
-    console.log("error: "+error);
+  alert("geolocation failed");
+  console.log("error: "+error);
 }
 function getLoc() {
   if(!localStorage.name){ 
