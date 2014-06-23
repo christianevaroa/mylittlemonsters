@@ -1,6 +1,7 @@
 setInterval(getLoc, 30000);
 
 function onSuccess(position) {
+  // alert("asdas");
   localStorage.latitude = position.coords.latitude;
   localStorage.longitude = position.coords.longitude;
   if(localStorage.id != "" && localStorage.id != undefined){
@@ -43,7 +44,7 @@ function distance (lat1, lon1, lat2, lon2) {
   return R * 2 * Math.asin(Math.sqrt(a));
 }
 
-// getLoc();
+getLoc();
 
 
 /**  Test function. for testing. **/

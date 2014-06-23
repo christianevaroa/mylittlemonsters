@@ -143,10 +143,6 @@
 
                     <!-- ALERT BOX OF WHAT MONSTERS ARE DOING/ TOP RIGHT CORNER -->
 
-    <div id="alertBox">
-        <a href="fightScreen.html"><img src="img/updatedox.png" ></a>
-    </div>
-
 
 
 
@@ -162,25 +158,6 @@
         <script src="js/backgroundSwitcher.js"></script>
 
                 <script>
-        setInterval(function(){
-            if(Math.random() < 1) {
-                var monsterlist = JSON.parse(localStorage.monsters);
-                var firstMonster = monsterlist[randomInt(monsterlist.length)].name;
-                var secondMonster = monsterlist[randomInt(monsterlist.length)].name;
-                while(secondMonster == firstMonster) {
-                    var secondMonster = monsterlist[randomInt(monsterlist.length)].name;
-                }
-                localStorage.firstMonster = firstMonster;
-                localStorage.secondMonster = secondMonster;
-
-                $('#alertBox').fadeIn('slow');
-
-            }
-        }, 5000); // 60000 = run every 10 minutes
-
-        function randomInt(max) {
-            return Math.floor(Math.random() * max);
-        }
 
              // 
               // PREVENTS RUBBER BANDING ON X & Y AXIS BUT ALSO ALLOWS SCROLLS ON X & Y

@@ -21,7 +21,6 @@ $(document).ready(function() {
       content += "<img src=\"" +img+ "\" id=\"" + id + "\"alt=\"" +alt+ "\">"
     }
 
-
     $("#owl-demo").html(content);
   }
  
@@ -90,10 +89,6 @@ $(document).ready(function() {
       })
     });
   }
-
-
-  // $('#gsmap').hide();
-
 
   if(!localStorage.name){
     // If you are not signed in
@@ -195,9 +190,7 @@ $(document).ready(function() {
 });
 
   $('#foundMonsterimage').click(function(){
-    var monsterName =$(this).attr('class');
-    alert("you clicked me!!!\n" +  monsterName );
-    alert("Now i will hide!!!!\n I need extra functionality");
+    var monsterName = $(this).attr('class');
     $('#FoundMonster').hide(); // just for now NOTE: its the container div not the image. 
   });
   
