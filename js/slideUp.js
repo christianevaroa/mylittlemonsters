@@ -55,11 +55,6 @@ $(document).ready(function() {
         // $(".fade2").fadeToggle("slow");
     });
 
-    $('#clickimgswap2').click(function(){
-
-        $(".fade3").fadeToggle("slow");
-    });
-
 });
 
 
