@@ -1,0 +1,372 @@
+
+#container {
+	position: absolute;
+	width: 1024px;
+	height: 768px;
+	border: 3px solid red;
+
+
+}
+
+#map-canvas {
+    height: 768px; 
+    width: 1024px;
+/*    z-index: -999;
+*/    position: absolute;
+/*    padding: 0;
+    margin: 0;*/
+
+}
+
+#BG {
+	position: absolute;
+	z-index: -999;
+
+}
+
+#Signinpage {
+    position: absolute;
+    z-index: -997;
+}
+
+#BG2 {
+	position: absolute;
+	z-index: -998;
+
+}
+
+#logOut {
+    position: absolute;
+    margin: 0;
+    padding: 10px;
+    float: left;
+    display: block;
+
+}
+
+#backButton {
+    position: absolute;
+    margin-bottom: 0;
+    margin-top: 0;
+    margin-left: 50px;
+    padding: 5px;
+    float: left;
+    display: block;
+
+}
+
+#Nav {
+	position: absolute;
+	margin-top: 100px;
+	float: left;
+}
+
+#Nav ul li {
+	display: block;
+	padding: 15px 0px;
+	margin-left: -30px;
+	/*margin-left: 1px;*/
+}
+
+#MyProfile {
+	position: absolute;
+	float: left;
+	margin-top: 10px;
+	display: none;
+	margin-left: 90px;
+    z-index: 5;
+/*	left: -334px;*/
+
+}
+
+#MonsterProfile {
+    position: absolute;
+    float: left;
+    /*margin-top: 10px;*/
+    display: none;
+    /*margin: auto;*/
+    margin-left: 360px;
+    /*left :270px;*/
+    margin-top: 370px; /*  WAS 370px */
+    margin-bottom: 0px;
+    z-index: 3;
+}
+
+#botScroll {
+
+	display: none;
+	position: absolute;
+	height: 180px;
+	width: 100%;
+	bottom: 0px;
+/*	bottom: -100px;*/
+
+/*	display: none;
+	position: relative;
+	padding-top: 640px;*/
+}
+#owl-demo {
+	text-align: center;
+	position: absolute;
+  	width: 100%;
+}
+
+
+/* ===========LOGIN CSS========== */
+
+#user-form {
+	margin-left: 354px;
+	margin-top: 32%;
+}
+
+/*#name {
+	background-color: #7ac2e0;
+}
+
+#password {
+	background-color: #7ac2e0;
+
+}*/
+input {
+	padding: 3px;
+	margin: 0;
+	display: block;
+}
+
+/*#login {
+	margin-left: 80px;
+}
+*/
+#user-form input[type=text],
+#user-form input[type=password] {
+    /* Size and position */
+    width: 50%;
+    padding: 8px 4px 8px 10px;
+    margin-bottom: 15px;
+
+    /* Styles */
+    border: 1px solid #4e3043; /* Fallback */
+    border: 1px solid rgba(76,99,44, 0.8);
+    background: rgba(0,0,0,0.15);
+    border-radius: 2px;
+    box-shadow: 
+        0 1px 0 rgba(255,255,255,0.2), 
+        inset 0 1px 1px rgba(0,0,0,0.1);
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+
+    /* Font styles */
+    font-family: 'Raleway', 'Lato', Arial, sans-serif;
+    color: #fff;
+    font-size: 13px;
+}
+
+#user-form input::-webkit-input-placeholder {
+    color: rgba(76,99,44,0.5);
+    text-shadow: 0 1px 0 rgba(255,255,255,0.15);
+}
+
+#user-form input:-moz-placeholder {
+    color: rgba(76,99,44,0.5);
+    text-shadow: 0 1px 0 rgba(255,255,255,0.15);
+}
+
+#user-form input:-ms-input-placeholder {
+    color: rgba(76,99,44,0.5);
+    text-shadow: 0 1px 0 rgba(255,255,255,0.15);
+
+}
+
+#user-form input[type=text]:hover,
+#user-form input[type=password]:hover {
+    border-color: #333;
+}
+
+#user-form input[type=text]:focus,
+#user-form input[type=password]:focus,
+#user-form input[type=submit]:focus {
+    box-shadow: 
+        0 1px 0 rgba(255,255,255,0.2), 
+        inset 0 1px 1px rgba(0,0,0,0.1),
+        0 0 0 3px rgba(255,255,255,0.15);
+    outline: none;
+}
+
+/* Fallback */
+.no-boxshadow #user-form input[type=text]:focus,
+.no-boxshadow #user-form input[type=password]:focus {
+    outline: 1px solid white;
+
+}
+
+#user-form input[type=submit] {
+    /* Size and position */
+    width: 52%;
+    padding: 8px 5px;
+    
+    /* Styles */
+    background: #99be2a;
+    background: -moz-linear-gradient(rgba(76,99,44,0.5), rgba(50,76,49,0.7));
+    background: -ms-linear-gradient(rgba(76,99,44,0.5), rgba(50,76,49,0.7));
+    background: -o-linear-gradient(rgba(76,99,44,0.5), rgba(50,76,49,0.7));
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(76,99,44,0.5)), to(rgba(50,76,49,0.7)));
+    background: -webkit-linear-gradient(rgba(76,99,44,0.5), rgba(50,76,49,0.7));
+    background: linear-gradient(rgba(76,99,44,0.5), rgba(50,76,49,0.7));    
+    border-radius: 5px;
+    border: 1px solid rgba(76,99,44,0.5);
+    box-shadow: inset 0 1px rgba(255,255,255,0.4), 0 2px 1px rgba(0,0,0,0.1);
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+
+    /* Font styles */
+    color: white;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Raleway', 'Lato', Arial, sans-serif;
+}
+
+#user-form input[type=submit]:hover {
+    box-shadow: 
+        inset 0 1px rgba(255,255,255,0.2), 
+        inset 0 20px 30px rgba(76,99,44,0.5);
+}
+
+/* Fallback */
+.no-boxshadow #user-form input[type=submit]:hover {
+    background: #594642;
+}
+
+#user-form label {
+    display: none;
+    padding: 0 0 5px 2px;
+    cursor: pointer;
+}
+
+#user-form label:hover ~ input {
+    border-color: #333;
+}
+
+.no-placeholder #user-form label {
+    display: block;
+}
+
+
+
+#creatureArea {
+    position: absolute;
+    /*display: none;*/
+    /*width: 300px;*/
+    /*height: 100px;*/
+    /*color: #ffffff;*/
+    margin-left: 400px;
+    margin-top: 490px;
+    text-align: center;
+    z-index: 1;
+    opacity: 0;
+}
+
+
+
+
+
+
+
+#alertBox {
+    position: absolute;
+    padding: 10px;
+/*    float: left;*/
+    margin-top: 0px;
+    display: none;
+    margin-left: 670px;
+    z-index: 10;
+/*  left: -334px;*/
+}
+
+
+/* CREATURE AREA PAGE */
+
+#plottedCreatures {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+
+}
+
+#purpleM {
+    position: absolute;
+    margin-top: 240px;
+    margin-left: 240px;
+
+}
+
+#greenM {
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 540px;
+}
+
+#glowM {
+    position: absolute;
+    margin-top: 2px;
+    margin-left: 550px;
+}
+
+#frogM {
+    position: absolute;
+    margin-top: 75px;
+    margin-left: 370px;
+}
+
+#blobM {
+    position: absolute;
+    margin-top: 360px;
+    margin-left: 720px;
+}
+
+/* CREATURE SPECIFIC PAGES WITH INTERACTION BOX AND INFOMATION */
+
+#detailedMonsterBox {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+}
+
+#clickimgswap {
+    position: absolute;
+    margin-top: 75px;
+    margin-left: 190px;
+    z-index: 1;
+}
+
+#clickimgswap2 {
+    position: absolute;
+    margin-top: 75px;
+    margin-left: 190px;
+}
+
+#interactionbox {
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 140px;
+    z-index: 1;
+
+}
+
+#infobox {
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 140px;
+}
+
+
+
+
+

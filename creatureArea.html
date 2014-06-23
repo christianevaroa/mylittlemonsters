@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]>    <html class="no-js iem7"> <![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="cleartype" content="on">
+
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/touch/apple-touch-icon-144x144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/touch/apple-touch-icon-114x114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/touch/apple-touch-icon-72x72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="img/touch/apple-touch-icon-57x57-precomposed.png">
+        <link rel="shortcut icon" href="img/touch/apple-touch-icon.png">
+
+        <!-- Tile icon for Win8 (144x144 + tile color) -->
+        <meta name="msapplication-TileImage" content="img/touch/apple-touch-icon-144x144-precomposed.png">
+        <meta name="msapplication-TileColor" content="#222222">
+
+
+        <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+        <!--
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="">
+        -->
+
+        <!-- This script prevents links from opening in Mobile Safari. https://gist.github.com/1042026 -->
+        <!--
+        <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
+        -->
+
+         <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+         <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="css/monsters.css">
+
+        <!-- OWL Carousel -->
+        <link rel="stylesheet" href="css/owl.theme.css">
+        <link rel="stylesheet" href="css/owl.carousel.css">
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/jquery-ui-1.10.4.js"></script>
+        <script src="js/jquery-ui-1.10.4.min.js"></script>
+
+        <script src="js/owl.carousel.js"></script>
+
+        <script type="text/javascript" src="js/slideUp.js"></script>
+        
+        <script src="js/creatureList.js"></script>
+        <script src="js/profileSlide.js"></script>
+        <script src="js/MyProfileToggle.js"></script>
+
+
+
+
+
+
+    </head>
+    <body>
+
+        <div id="container">
+            <!-- <div id="BG"><img src="img/GatheringScreen.jpg"></div> -->
+
+          <div><img id="BG2" src="img/GatheringScreen.jpg"> </div> 
+
+                        
+                    <div id="logOut"><img src="img/logout.png"></div>
+
+                    <!-- Creatures plotted on the area -->
+
+                    <div id="plottedCreatures">
+
+                        <div id="purpleM"><img src="img/gatheringscreen/purplemonster.png"></div>
+                        <div id="greenM"><img src="img/gatheringscreen/greenmonster.png"></div>
+                        <div id="glowM"><img src="img/gatheringscreen/glowmonster.png"></div>
+                        <div id="frogM"><img src="img/gatheringscreen/frogman.png"></div>
+                        <div id="blobM"><a href="blobM.html"><img src="img/gatheringscreen/blob.png"></a></div>
+
+
+                    </div>
+
+                     <!-- PROFILE THAT SLIDES DOWN -->
+
+                    <div id="MyProfile">
+                        <ul>
+                        <img src="img/Profile1.png">
+                        </ul>
+                    </div>
+
+                        <!-- PROFILE OF MONSTERS IN THE BOT-SCROLL ARRAY -->
+
+                     <div id="MonsterProfile">
+                        <ul>
+                            <img src="" class="monster-profile-image" id="">
+                        </ul>
+                    </div>
+
+                    <!-- NAV BAR -->
+
+                <div id="Nav">
+                    <ul>
+
+                        <li id="Map"><a href="map.html"><img src="img/mapNav.png"></a></li>
+
+                        <li id="island"><a href="index.html"><img src="img/islandNav.png"></a></li>
+
+                        <li id="Monsters"><img src="img/profileNav1.png"></li>
+<!--                         <li id="MyProfile"><img src="img/MyProfile.png"></li> -->
+                        <li id="MyMonsters"><img src="img/creaturesNav.png"></li>
+
+                    </ul>
+
+
+                </div>
+
+                <!-- ARRAY OF MONSTERS BOTTOM OF SCREEN -->
+
+            <div id="botScroll">
+                <div id="owl-demo" class="owl-carousel">
+                </div>
+            </div>
+
+                    <!-- SIGN IN PAGE/ HIDDEN UNLESS ON SIGNIN LOCATED IN INDEX.HTML -->
+
+    <div id="signin">       
+        <div id="user-form">
+                <!-- <form action='/signin' id='login-form' method='post'> -->
+        <input type="text" name="name" id="name" placeholder="Username"><br>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password"><br>
+        <input type="submit" value="login" id="login"/>
+                <!-- </form> -->
+        </div>      
+    </div>
+
+                    <!-- ALERT BOX OF WHAT MONSTERS ARE DOING/ TOP RIGHT CORNER -->
+
+    <div id="alertBox">
+        <a href="fightScreen.html"><img src="img/updatedox.png" ></a>
+    </div>
+
+
+
+
+        </div>      <!-- END OF ID "CONTAINER" -->
+
+
+
+
+        <!-- Add your site or application content here -->
+
+        <script src="js/vendor/zepto.min.js"></script>
+        <script src="js/helper.js"></script>
+        <script src="js/backgroundSwitcher.js"></script>
+
+                <script>
+        setInterval(function(){
+            if(Math.random() < 1) {
+                var monsterlist = JSON.parse(localStorage.monsters);
+                var firstMonster = monsterlist[randomInt(monsterlist.length)].name;
+                var secondMonster = monsterlist[randomInt(monsterlist.length)].name;
+                while(secondMonster == firstMonster) {
+                    var secondMonster = monsterlist[randomInt(monsterlist.length)].name;
+                }
+                localStorage.firstMonster = firstMonster;
+                localStorage.secondMonster = secondMonster;
+                // var effect = 'slide';
+                // var options = { direction : 'up' };
+                // var duration = 300;
+                console.log("alertBox should slide in");
+                // $("#alertBox").toggle(effect, options, duration);
+
+                $('#alertBox').fadeIn('slow');
+
+            }
+        }, 5000); // 60000 = run every 10 minutes
+
+        function randomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+             // 
+              // PREVENTS RUBBER BANDING ON X & Y AXIS BUT ALSO ALLOWS SCROLLS ON X & Y
+
+                    (function registerScrolling($) {
+    var prevTouchPosition = {},
+        scrollYClass = 'scroll-y',
+        scrollXClass = 'scroll-x',
+        searchTerms = '.' + scrollYClass + ', .' + scrollXClass;
+
+    $('body').on('touchstart', function (e) {
+        var $scroll = $(e.target).closest(searchTerms),
+            targetTouch = e.originalEvent.targetTouches[0];
+
+        // Store previous touch position if within a scroll element
+        prevTouchPosition = $scroll.length ? { x: targetTouch.pageX, y: targetTouch.pageY } : {};
+    });
+
+$('body').on('touchmove', function (e) {
+    var $scroll = $(e.target).closest(searchTerms),
+        targetTouch = e.originalEvent.targetTouches[0];
+
+    if (prevTouchPosition && $scroll.length) {
+        // Set move helper and update previous touch position
+        var move = {
+            x: targetTouch.pageX - prevTouchPosition.x,
+            y: targetTouch.pageY - prevTouchPosition.y
+        };
+        prevTouchPosition = { x: targetTouch.pageX, y: targetTouch.pageY };
+
+        // Check for scroll-y or scroll-x classes
+        if ($scroll.hasClass(scrollYClass)) {
+            var scrollHeight = $scroll[0].scrollHeight,
+                outerHeight = $scroll.outerHeight(),
+
+                atUpperLimit = ($scroll.scrollTop() === 0),
+                atLowerLimit = (scrollHeight - $scroll.scrollTop() === outerHeight);
+
+            if (scrollHeight > outerHeight) {
+                // If at either limit move 1px away to allow normal scroll behavior on future moves,
+                // but stop propagation on this move to remove limit behavior bubbling up to body
+                if (move.y > 0 && atUpperLimit) {
+                    $scroll.scrollTop(1);
+                    e.stopPropagation();
+                } else if (move.y < 0 && atLowerLimit) {
+                    $scroll.scrollTop($scroll.scrollTop() - 1);
+                    e.stopPropagation();
+                }
+
+                // If only moving right or left, prevent bad scroll.
+                if(Math.abs(move.x) > 0 && Math.abs(move.y) < 3){
+                  e.preventDefault()
+                }
+
+                // Normal scrolling behavior passes through
+            } else {
+                // No scrolling / adjustment when there is nothing to scroll
+                e.preventDefault();
+            }
+        } else if ($scroll.hasClass(scrollXClass)) {
+            var scrollWidth = $scroll[0].scrollWidth,
+                outerWidth = $scroll.outerWidth(),
+
+                atLeftLimit = $scroll.scrollLeft() === 0,
+                atRightLimit = scrollWidth - $scroll.scrollLeft() === outerWidth;
+
+            if (scrollWidth > outerWidth) {
+                if (move.x > 0 && atLeftLimit) {
+                    $scroll.scrollLeft(1);
+                    e.stopPropagation();
+                } else if (move.x < 0 && atRightLimit) {
+                    $scroll.scrollLeft($scroll.scrollLeft() - 1);
+                    e.stopPropagation();
+                }
+                // If only moving up or down, prevent bad scroll.
+                if(Math.abs(move.y) > 0 && Math.abs(move.x) < 3){
+                  e.preventDefault();
+                }
+
+                // Normal scrolling behavior passes through
+            } else {
+                // No scrolling / adjustment when there is nothing to scroll
+                e.preventDefault();
+            }
+        }
+    } else {
+        // Prevent scrolling on non-scrolling elements
+        e.preventDefault();
+    }
+});
+})(jQuery);
+
+        </script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+
+    </body>
+</html>

@@ -1,0 +1,50 @@
+
+
+#container {
+	width: 640px;
+	height: 1136px;
+	border: 3px solid red;
+
+}
+
+#background-map {
+	position: absolute;
+	background-image: url('img/map.png');
+	/*opacity: 0.2*//* filter: alpha(opacity=20); */
+	z-index: -9999;
+}
+
+
+#navBar {
+
+}
+
+#navBar ul li {
+	display: inline-block;
+	padding: 30px;
+}
+
+#activityFeed {
+	width: 100%;
+	background-color: #ebebeb;
+	/*opacity: 0.2;*/
+	z-index: -999;
+}
+
+#user1 img {
+	float: left;
+	display: inline-block;
+	padding-top: 15px;
+
+}
+
+#user1 ul li {
+	display: block;
+	margin-left: 100px;
+	line-height: 0.2em;
+	padding: 0.2em;
+}
+
+#user1 ul li h3 {
+	padding-bottom: 5px;
+}

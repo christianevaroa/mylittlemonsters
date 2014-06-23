@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+
+	<style type="text/css">
+/*	html { height: 100% }
+	body { height: 100%; margin: 0; padding: 0 }*/
+/*	#map-canvas {
+	 	height: 768px; 
+	 	width: 1024px;
+	 	z-index: -999;
+	 	position: absolute;
+
+	}*/
+
+	</style>
+	<script type="text/javascript"
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkI5kDsdttdCHFA4aEj-mZuJVL7iXupBs&sensor=TRUE">
+	</script>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+		<!-- ADDED LINKS TO SCRIPTS FOR UI ECT -->
+
+	     <!-- // <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>  ******* -->
+         <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="css/monsters.css">
+
+        <!-- OWL Carousel -->
+        <link rel="stylesheet" href="css/owl.theme.css">
+        <link rel="stylesheet" href="css/owl.carousel.css">
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <!-- // <script src="js/jquery-ui-1.10.4.js"></script> -->
+        <script src="js/jquery-ui-1.10.4.min.js"></script>
+
+        <script src="js/owl.carousel.js"></script>
+
+        <script type="text/javascript" src="js/slideUp.js"></script>
+        
+        <script src="js/creatureList.js"></script>
+        <!-- // <script src="js/profileSlide.js"></script> -->
+         <script src="js/MyProfileToggle.js"></script>
+         <script src="js/geoupdate.js"></script>
+
+        <!-- END OF UI SCRIPTS LIST -->
+
+	<script type="text/javascript">
+
+var markers = [ ];
+var circles = [];
+    var userMarker;
+    var theUserMarker;
+    var map;
+
+   $(document).ready(function(){  
+
+
+    var overlay;
+    USGSOverlay.prototype = new google.maps.OverlayView();
+
+        // array to store the monster markers
+        
+
+    function initialize() {
+            // options to pass set up map
+            var center = new google.maps.LatLng( -41.288916, 174.767911);
+            var mapOptions = {
+
+                center: center,
+                zoom: 15,
+                maxZoom: 17,
+                minZoom: 14,
+
+                panControl: false,
+         zoomControl: false,
+         scaleControl: false,
+         mapTypeControl: false,
+         streetViewControl: false,
+         overviewMapControl: false
+
+       };
+            // set up new google map
+            map = new google.maps.Map(document.getElementById("map-canvas"),
+                mapOptions);
+
+     var swBound = new google.maps.LatLng(-41.310935, 174.703182);
+     var neBound = new google.maps.LatLng(-41.254932, 174.801525);
+     var bounds = new google.maps.LatLngBounds(swBound, neBound);
+
+     var srcImage = 'https://s3-ap-southeast-2.amazonaws.com/nwen304-assets/Main+Screens/map.png';
+
+     overlay = new USGSOverlay(bounds, srcImage, map);
+
+            // bounds of the desired area
+            var allowedBounds = new google.maps.LatLngBounds(
+                new google.maps.LatLng(-41.289624, 174.732128), 
+                new google.maps.LatLng(-41.271228, 174.777973)
+                );
+            var lastValidCenter = map.getCenter();
+
+            google.maps.event.addListener(map, 'center_changed', function() {
+                if (allowedBounds.contains(map.getCenter())) {
+        // still within valid bounds, so save the last valid position
+        lastValidCenter = map.getCenter();
+        return; 
+      }
+
+    // not valid anymore => return to last valid position
+    map.panTo(lastValidCenter);
+  });
+          getMarkers();
+          setInterval(getMarkers, 60000);
+
+} // end of initialize function
+
+function USGSOverlay(bounds, image, map) {
+  this.bounds_ = bounds;
+  this.image_ = image;
+  this.map_ = map;
+
+  this.div_ = null;
+
+  this.setMap(map);
+};
+
+function getMarkers() {
+  for(var i = 0; i < circles.length; i++){
+    circles[i].setMap(null);
+  }
+  for(var i = 0; i < markers.length; i++){
+    markers[i].setMap(null);
+  }
+  markers = [];
+  circles = [];
+  var jsonUrl = "http://pure-gorge-4988.herokuapp.com/nearest/"+localStorage.latitude+"/"+localStorage.longitude;
+  $.getJSON(jsonUrl, function(data) {
+    localStorage.nearestMonsters = JSON.stringify(data);
+    $.each( data, function( key, val ) {
+            /* val is a json object that looks like this
+            {
+                "lat": -41.288916,
+                "lon": 174.767911,
+                "monster": "bob"
+              }  */       
+            // create markers with each object
+            var monsterMarker = new google.maps.LatLng(val.lat, val.lon);
+            var thisMonsterMarker = new google.maps.Marker({
+              position : monsterMarker,
+              map : map,
+              title : val.name, 
+              icon : 'https://s3-ap-southeast-2.amazonaws.com/nwen304-assets/Map+Icons/'+val.name+'.png'  
+            });
+            markers.push(thisMonsterMarker);
+            thisMonsterMarker.setMap(map);
+            // options to draw the circle
+            var circleOptions = {
+              strokeColor: '#FF0000',
+              strokeOpacity: 0.8,
+              strokeWeight: 2,
+              fillColor: '#FF0000',
+              fillOpacity: 0.35,
+              map: map,
+              center: monsterMarker,
+                radius: 100 // radius in metres
+              };
+            // draw the circle
+            circles.push(new google.maps.Circle(circleOptions));
+          });
+});
+userMarker = new google.maps.LatLng(localStorage.latitude, localStorage.longitude);
+theUserMarker = new google.maps.Marker({
+  position : userMarker,
+  map : map,
+  title : "YOU ARE HERE", 
+});
+  markers.push(theUserMarker);
+  theUserMarker.setMap(map);
+}
+
+/**
+ * onAdd is called when the map's panes are ready and the overlay has been
+ * added to the map.
+ */
+ USGSOverlay.prototype.onAdd = function() {
+
+ 	var div = document.createElement('div');
+ 	div.style.borderStyle = 'none';
+ 	div.style.borderWidth = '0px';
+ 	div.style.position = 'absolute';
+
+  // Create the img element and attach it to the div.
+  var img = document.createElement('img');
+  img.src = this.image_;
+  img.style.width = '100%';
+  img.style.height = '100%';
+  img.style.position = 'absolute';
+  div.appendChild(img);
+
+  this.div_ = div;
+
+  // Add the element to the "overlayLayer" pane.
+  var panes = this.getPanes();
+  panes.overlayLayer.appendChild(div);
+};
+
+USGSOverlay.prototype.draw = function() {
+
+  // We use the south-west and north-east
+  // coordinates of the overlay to peg it to the correct position and size.
+  // To do this, we need to retrieve the projection from the overlay.
+  var overlayProjection = this.getProjection();
+
+  // Retrieve the south-west and north-east coordinates of this overlay
+  // in LatLngs and convert them to pixel coordinates.
+  // We'll use these coordinates to resize the div.
+  var sw = overlayProjection.fromLatLngToDivPixel(this.bounds_.getSouthWest());
+  var ne = overlayProjection.fromLatLngToDivPixel(this.bounds_.getNorthEast());
+
+  // Resize the image's div to fit the indicated dimensions.
+  var div = this.div_;
+  div.style.left = sw.x + 'px';
+  div.style.top = ne.y + 'px';
+  div.style.width = (ne.x - sw.x) + 'px';
+  div.style.height = (sw.y - ne.y) + 'px';
+};
+
+// The onRemove() method will be called automatically from the API if
+// we ever set the overlay's map property to 'null'.
+USGSOverlay.prototype.onRemove = function() {
+	this.div_.parentNode.removeChild(this.div_);
+	this.div_ = null;
+};
+
+// now create the map when the window loads
+google.maps.event.addDomListener(window, 'load', initialize);
+
+});
+
+
+
+</script>
+</head>
+<body>
+        <div id="container">
+
+        <div id="mapMove">
+        <div id="map-canvas"></div>
+        </div>
+
+                    <div id="logOut"><img src="img/logout.png"></div>
+
+                    <div id="MyProfile">
+                        <ul>
+                        <img src="img/Profile1.png">
+                        </ul>
+                    </div>
+
+
+                     <div id="MonsterProfile">
+                        <ul>
+                            <img src="" class="monster-profile-image" id="">
+                        </ul>
+                    </div>
+
+
+                <div id="Nav">
+                    <ul>
+                        <li id="Map"><a href="map.html"><img src="img/mapNav.png"></a></li>
+
+                        <li id="island"><a href="index.html"><img src="img/islandNav.png"></a></li>
+
+                        <li id="Monsters"><img src="img/profileNav1.png"></li>
+                         <!-- <li id="MyProfile"><img src="img/MyProfile.png"></li> -->
+                        <li id="MyMonsters"><img src="img/creaturesNav.png"></li>
+
+                    </ul>
+
+
+                </div>
+
+ 
+            <div id="botScroll">
+                <div id="owl-demo" class="owl-carousel">
+                </div>
+            </div> 
+
+
+     <div id="signin">       
+        <div id="user-form">
+                <!-- <form action='/signin' id='login-form' method='post'> -->
+        <input type="text" name="name" id="name" placeholder="Username"><br>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password"><br>
+        <input type="submit" value="login" id="login"/>
+                <!-- </form> -->
+        </div>      
+    </div>
+ 
+
+        </div>
+
+                        <script>
+        setInterval(function(){
+            if(Math.random() < 1) {
+                var monsterlist = JSON.parse(localStorage.monsters);
+                var firstMonster = monsterlist[randomInt(monsterlist.length)].name;
+                var secondMonster = monsterlist[randomInt(monsterlist.length)].name;
+                while(secondMonster == firstMonster) {
+                    var secondMonster = monsterlist[randomInt(monsterlist.length)].name;
+                }
+                localStorage.firstMonster = firstMonster;
+                localStorage.secondMonster = secondMonster;
+                // var effect = 'slide';
+                // var options = { direction : 'up' };
+                // var duration = 300;
+                console.log("alertBox should slide in");
+                // $("#alertBox").toggle(effect, options, duration);
+
+                $('#alertBox').fadeIn('slow');
+
+            }
+        }, 5000); // 60000 = run every 10 minutes
+
+        function randomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+              // 
+              // PREVENTS RUBBER BANDING ON X & Y AXIS BUT ALSO ALLOWS SCROLLS ON X & Y
+
+                    (function registerScrolling($) {
+    var prevTouchPosition = {},
+        scrollYClass = 'scroll-y',
+        scrollXClass = 'scroll-x',
+        searchTerms = '.' + scrollYClass + ', .' + scrollXClass;
+
+    $('body').on('touchstart', function (e) {
+        var $scroll = $(e.target).closest(searchTerms),
+            targetTouch = e.originalEvent.targetTouches[0];
+
+        // Store previous touch position if within a scroll element
+        prevTouchPosition = $scroll.length ? { x: targetTouch.pageX, y: targetTouch.pageY } : {};
+    });
+
+$('body').on('touchmove', function (e) {
+    var $scroll = $(e.target).closest(searchTerms),
+        targetTouch = e.originalEvent.targetTouches[0];
+
+    if (prevTouchPosition && $scroll.length) {
+        // Set move helper and update previous touch position
+        var move = {
+            x: targetTouch.pageX - prevTouchPosition.x,
+            y: targetTouch.pageY - prevTouchPosition.y
+        };
+        prevTouchPosition = { x: targetTouch.pageX, y: targetTouch.pageY };
+
+        // Check for scroll-y or scroll-x classes
+        if ($scroll.hasClass(scrollYClass)) {
+            var scrollHeight = $scroll[0].scrollHeight,
+                outerHeight = $scroll.outerHeight(),
+
+                atUpperLimit = ($scroll.scrollTop() === 0),
+                atLowerLimit = (scrollHeight - $scroll.scrollTop() === outerHeight);
+
+            if (scrollHeight > outerHeight) {
+                // If at either limit move 1px away to allow normal scroll behavior on future moves,
+                // but stop propagation on this move to remove limit behavior bubbling up to body
+                if (move.y > 0 && atUpperLimit) {
+                    $scroll.scrollTop(1);
+                    e.stopPropagation();
+                } else if (move.y < 0 && atLowerLimit) {
+                    $scroll.scrollTop($scroll.scrollTop() - 1);
+                    e.stopPropagation();
+                }
+
+                // If only moving right or left, prevent bad scroll.
+                if(Math.abs(move.x) > 0 && Math.abs(move.y) < 3){
+                  e.preventDefault()
+                }
+
+                // Normal scrolling behavior passes through
+            } else {
+                // No scrolling / adjustment when there is nothing to scroll
+                e.preventDefault();
+            }
+        } else if ($scroll.hasClass(scrollXClass)) {
+            var scrollWidth = $scroll[0].scrollWidth,
+                outerWidth = $scroll.outerWidth(),
+
+                atLeftLimit = $scroll.scrollLeft() === 0,
+                atRightLimit = scrollWidth - $scroll.scrollLeft() === outerWidth;
+
+            if (scrollWidth > outerWidth) {
+                if (move.x > 0 && atLeftLimit) {
+                    $scroll.scrollLeft(1);
+                    e.stopPropagation();
+                } else if (move.x < 0 && atRightLimit) {
+                    $scroll.scrollLeft($scroll.scrollLeft() - 1);
+                    e.stopPropagation();
+                }
+                // If only moving up or down, prevent bad scroll.
+                if(Math.abs(move.y) > 0 && Math.abs(move.x) < 3){
+                  e.preventDefault();
+                }
+
+                // Normal scrolling behavior passes through
+            } else {
+                // No scrolling / adjustment when there is nothing to scroll
+                e.preventDefault();
+            }
+        }
+    } else {
+        // Prevent scrolling on non-scrolling elements
+        e.preventDefault();
+    }
+});
+})(jQuery);
+        </script>
+
+</body>
+</html>

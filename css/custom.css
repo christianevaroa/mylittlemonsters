@@ -1,0 +1,69 @@
+#container {
+	width: 640px;
+	height: 1136px;
+	border: 3px solid red;
+
+}
+/*
+#background-map {
+	position: absolute;
+	background-image: url('img/map.png');
+	opacity: 0.2;/* filter: alpha(opacity=20);
+z-index: -9999;
+}*/
+
+
+#navBar {
+
+}
+
+#navBar ul li {
+	display: inline-block;
+	padding: 30px;
+}
+
+#displayScreen {
+/*	border: 2px solid red;*/
+/*	margin: 15px;*/
+	/*width: 610px;*/
+	width:100%;
+	height: 360px;
+	background-color: #b8b8b8;
+/*	background-color: #ffffff;
+	opacity: 0.4;*/
+
+	-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+#creatureIcon {
+
+}
+
+#creatureIcon ul{
+	-webkit-overflow-scrolling: touch;
+
+
+}
+
+#creatureIcon ul li{
+	display: inline-block;
+	padding: 20px 16px;
+
+}
+
+#creatureInfo {
+	margin-left: 15px;
+	padding: 10px;
+}
+
+#creatureInfo ul li {
+	list-style-type: none;
+}
+
+#creatureInfo h3 {
+
+	padding-top: 30px;
+	float: right;
+}
