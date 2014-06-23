@@ -9,6 +9,14 @@ function onSuccess(position) {
       if(data.name != "fail") {
         // You caught a monster, inform the user somehow
         alert("you caught "+data.name);
+        // get image page and change the foundMonster image to it 
+        var imagePath = 'img/MonstersFound/'+ data.name + 'found.png'
+        $('#foundMonsterimage').attr('src', imagePath);
+        // change the class to the name of the monster so we have a reference to it 
+        // the click function is in creature List.js down the bottom
+        $('#foundMonsterimage').attr('class', data.name);
+        // show it to user
+        $('#FoundMonster').show();
       }
     });
   }
@@ -33,3 +41,19 @@ function distance (lat1, lon1, lat2, lon2) {
 }
 
 getLoc();
+
+
+/**  Test function. for testing. **/
+/**   ***/
+function slideMyBox(name){
+  // var name = "glowmonster";
+  var imagePath = 'img/MonstersFound/'+ name + 'found.png'
+  // console.log(image);
+  $('#foundMonsterimage').attr('src', imagePath);
+  $('#foundMonsterimage').attr('class', name)
+
+  $('#FoundMonster').show();
+
+}
+  // set up the click function for the image. Call this once
+

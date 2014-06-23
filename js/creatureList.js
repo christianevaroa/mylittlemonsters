@@ -193,6 +193,11 @@ $(document).ready(function() {
     $('#creatureArea').click(function(){
     window.location.replace('creatureArea.html');
 });
+
+  $('#foundMonsterimage').click(function(){
+    var monsterName =$(this).attr('class');
+    alert("you clicked me!!!\n" +  monsterName );
+  });
   
 
 });

@@ -111,6 +111,13 @@
   	width: 100%;
 }
 
+#FoundMonster{
+    position: relative;   
+    text-align: center; 
+    top: 100px;
+}
+
+
 
 /* ===========LOGIN CSS========== */
 
