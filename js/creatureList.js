@@ -120,7 +120,7 @@ $(document).ready(function() {
     $('#gsempty').show();
     $('#logOut').show();
     $('#creatureArea').show();
-    // $('#alertBoxList').show();
+    $('#alertBoxList').show();
 
     showNav();
   }
@@ -189,6 +189,10 @@ $(document).ready(function() {
     });
     $('#creatureArea').click(function(){
     window.location.replace('creatureArea.html');
+});
+
+        $('#creatureArea2').click(function(){
+    window.location.replace('creatureArea2.html');
 });
 
   $('#foundMonsterimage').click(function(){

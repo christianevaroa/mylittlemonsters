@@ -10,14 +10,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="cleartype" content="on">
 
-        <meta name="description" content="">
-        <meta name="HandheldFriendly" content="True">
-        <meta name="MobileOptimized" content="320">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="cleartype" content="on">
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/touch/apple-touch-icon-144x144-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/touch/apple-touch-icon-114x114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/touch/apple-touch-icon-72x72-precomposed.png">
@@ -27,14 +19,6 @@
         <!-- Tile icon for Win8 (144x144 + tile color) -->
         <meta name="msapplication-TileImage" content="img/touch/apple-touch-icon-144x144-precomposed.png">
         <meta name="msapplication-TileColor" content="#222222">
-
-         <!-- ADD2HOME META TAGS -->
-        <script type="application/javascript" src="js/lib/add2home.js"></script>
-
-        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
-        <link rel="stylesheet" type="text/css" href="css/monsters.css">
 
 
         <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
@@ -74,7 +58,6 @@
         <script src="js/creatureList.js"></script>
         <script src="js/profileSlide.js"></script>
         <script src="js/MyProfileToggle.js"></script>
-        <!-- // <script src="js/geoupdate.js"></script> -->
 
 
 
@@ -85,20 +68,14 @@
     <body>
 
         <div id="container">
-            <div id="Signinpage"><img src="img/signinTrial.jpg"></div>
-                <!-- <div id="creatureArea"></div> -->
-          <div id="BG"><img src="img/plainbackground.jpg"> </div> 
+            <!-- <div id="BG"><img src="img/GatheringScreen.jpg"></div> -->
+
+          <div><img id="BG2" src="img/topofmountain.jpg"></div> 
 
                         
                     <div id="logOut"><img src="img/logout.png"></div>
-                    <div id="backButton"><a href="index.html"><img src="img/backbutton.png"></a></div>
 
-<!--                      <div id="creatureArea"><img src="img/Creatures.png" width="90" height="90"></div>  -->
-                     <img src="img/headsuckanimation.gif" id="headsucker">
-
-                                         <div id="detailedMonsterBox">
-                                            <div id="infobox"><img   src="img/helpbox.png"></div>
-                                         </div>
+                     <!-- PROFILE THAT SLIDES DOWN -->
 
                     <div id="MyProfile">
                         <ul>
@@ -106,15 +83,16 @@
                         </ul>
                     </div>
 
-                                                        <!-- Bot Scroll clickable / monster profiles -->
+                        <!-- PROFILE OF MONSTERS IN THE BOT-SCROLL ARRAY -->
+
                      <div id="MonsterProfile">
                         <ul>
                             <img src="" class="monster-profile-image" id="">
                         </ul>
                     </div>
 
+                    <!-- NAV BAR -->
 
-                                <!-- The NAV BAR -->
                 <div id="Nav">
                     <ul>
 
@@ -128,30 +106,41 @@
 
                     </ul>
 
+
                 </div>
+
+                <!-- ARRAY OF MONSTERS BOTTOM OF SCREEN -->
 
             <div id="botScroll">
                 <div id="owl-demo" class="owl-carousel">
                 </div>
             </div>
 
-
+                    <!-- SIGN IN PAGE/ HIDDEN UNLESS ON SIGNIN LOCATED IN INDEX.HTML -->
 
     <div id="signin">       
         <div id="user-form">
                 <!-- <form action='/signin' id='login-form' method='post'> -->
-        <input type="text" name="name" id="name" autocorrect="off" autocapitalize="off" placeholder="Username"><br>
-        <input type="password" class="form-control" name="password" id="password" autocorrect="off" autocapitalize="off" placeholder="Password"><br>
+        <input type="text" name="name" id="name" placeholder="Username"><br>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password"><br>
         <input type="submit" value="login" id="login"/>
                 <!-- </form> -->
         </div>      
     </div>
 
+                    <!-- ALERT BOX OF WHAT MONSTERS ARE DOING/ TOP RIGHT CORNER -->
+
     <div id="alertBoxList">
-
+<!--         <div id="alertBox1" class="alertBox">
+            <a href="fightScreen.html"><img id="alertBoxImage-1" src="img/updatedox.png" ></a>
+        </div> -->
+<!--         <div id="alertBox2" class="alertBox">
+            <a href="fightScreen.html"><img id="alertBoxImage-2" src="img/blobupdate.png" ></a>
+        </div> -->
     </div>
 
-    </div>
+
+        </div>      <!-- END OF ID "CONTAINER" -->
 
 
 
@@ -160,14 +149,14 @@
 
         <script src="js/vendor/zepto.min.js"></script>
         <script src="js/helper.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
+        <script src="js/backgroundSwitcher.js"></script>
 
-        <script>
-                // PREVENTS THE IPAD FROM RUBBER BANDING X & Y POSITION 
-                // HAS GOT SCROLL X & Y INCASE ELEMENT INSIDE THE APP NEED TO BE SCROLLED AND WOULD BE PREVENTED
+                <script>
 
+             // 
+              // PREVENTS RUBBER BANDING ON X & Y AXIS BUT ALSO ALLOWS SCROLLS ON X & Y
 
-            (function registerScrolling($) {
+                    (function registerScrolling($) {
     var prevTouchPosition = {},
         scrollYClass = 'scroll-y',
         scrollXClass = 'scroll-x',
