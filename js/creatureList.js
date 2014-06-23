@@ -193,6 +193,13 @@ $(document).ready(function() {
     $('#creatureArea').click(function(){
     window.location.replace('creatureArea.html');
 });
+
+  $('#foundMonsterimage').click(function(){
+    var monsterName =$(this).attr('class');
+    alert("you clicked me!!!\n" +  monsterName );
+    alert("Now i will hide!!!!\n I need extra functionality");
+    $('#FoundMonster').hide(); // just for now NOTE: its the container div not the image. 
+  });
   
 
 });
