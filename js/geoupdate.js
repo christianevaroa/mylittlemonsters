@@ -1,6 +1,7 @@
 setInterval(getLoc, 30000);
 
 function onSuccess(position) {
+  // alert("asdas");
   localStorage.latitude = position.coords.latitude;
   localStorage.longitude = position.coords.longitude;
   if(localStorage.id != "" && localStorage.id != undefined){
@@ -25,6 +26,9 @@ function onError(error) {
     console.log("error: "+error);
 }
 function getLoc() {
+  if(!localStorage.name){ 
+    return;
+  }
     navigator.geolocation.getCurrentPosition(onSuccess, onError,{timeout:15000,maximumAge:60000,enableHighAccuracy:true});
 }
 
