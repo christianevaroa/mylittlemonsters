@@ -286,8 +286,8 @@ input {
 
 
 
-#alertBox {
-    position: absolute;
+.alertBox {
+    position: relative;
     padding: 10px;
 /*    float: left;*/
     margin-top: 0px;

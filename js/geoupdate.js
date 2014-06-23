@@ -25,7 +25,7 @@ function onError(error) {
     console.log("error: "+error);
 }
 function getLoc() {
-  if(!localStorage.name){
+  if(!localStorage.name){ 
     return;
   }
     navigator.geolocation.getCurrentPosition(onSuccess, onError,{timeout:15000,maximumAge:60000,enableHighAccuracy:true});
@@ -43,7 +43,7 @@ function distance (lat1, lon1, lat2, lon2) {
   return R * 2 * Math.asin(Math.sqrt(a));
 }
 
-getLoc();
+// getLoc();
 
 
 /**  Test function. for testing. **/
